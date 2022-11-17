@@ -135,11 +135,20 @@ packer.startup(function(use)
       run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
     }
 
+    -- Debugging
+    use 'mfussenegger/nvim-dap'
+    use {
+      'rcarriga/nvim-dap-ui',
+      requires = {
+        'mfussenegger/nvim-dap'
+      }
+    }
+
+
 	-- Utility / random
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'jremmen/vim-ripgrep'
     use 'tpope/vim-fugitive'
-    use 'mfussenegger/nvim-dap'
 end
 )

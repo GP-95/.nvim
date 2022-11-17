@@ -52,6 +52,18 @@ lspconfig.tsserver.setup({
   end,
 })
 
+-- lspconfig.gdscript.setup({
+--   on_attach = function (client)
+--     local _notify = client.notify
+--     client.notify = function (method, params)
+--       if method == 'textDocument/didClose' then
+--         return
+--       end
+--       _notify(method, params)
+--     end
+--   end
+-- })
+
 -- Temporary till I am not lazy
 for _, v in pairs(languageServers) do
   if(v == 'sumneko_lua') then
@@ -71,7 +83,7 @@ for _, v in pairs(languageServers) do
     lspconfig[v].setup({
         filetypes = { "json", "jsonc" }
       })
-  elseif (v == 'tsserver') then
+  elseif (v == 'tsserver' or v == 'gdscript') then
     goto continue
   else
     lspconfig[v].setup({})

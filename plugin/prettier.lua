@@ -15,12 +15,14 @@ require("prettier").setup({
       'rust',
       'go'
   },
-  -- cli_options = {
-  --   arrow_parens = 'always',
-  --   bracket_spacing = true,
-  --   embedded_language_formatting = 'auto',
-  --   print_width = 80,
-  --   semi = false,
-  --   use_tabs = false
-  -- }
+  cli_options = {
+    arrow_parens = 'always',
+    bracket_spacing = true,
+    embedded_language_formatting = 'auto',
+    print_width = 80,
+    semi = false,
+    use_tabs = false,
+    tab_width = 4,
+  end_of_line = 'lf'
+  }
 })

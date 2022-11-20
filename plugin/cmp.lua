@@ -6,6 +6,7 @@ local select_opts = {
   behavior = cmp.SelectBehavior.Select
 }
 
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -13,16 +14,15 @@ cmp.setup({
     end
   },
   sources = {
+    {name = 'nvim_lsp'},
+    {name = 'nvim_lsp_signature_help'},
+    {name = 'nvim_lua'},
     {name = 'path'},
-    {name = 'nvim_lsp', keyword_length = 3},
     {name = 'buffer', keyword_length = 3,},
     {name = 'luasnip', keyword_length = 2},
     {name = 'rg', keyword_length = 3},
-    {name = 'nvim_lsp_signature_help'},
     {name = 'crates'},
-    {name = 'nvim_lua'},
     {name = 'plugins', keyword_length = 3}
-
   },
   window = {
     documentation = cmp.config.window.bordered()
@@ -38,7 +38,8 @@ cmp.setup({
           nvim_lsp = 'λ',
           luasnip = '⋗',
           buffer = 'Ω',
-          path = '🖫',
+          -- path = '🖫',
+          path=""
         }
 
         item.menu = menu_icon[entry.source.name]

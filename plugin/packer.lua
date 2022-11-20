@@ -22,11 +22,11 @@ packer.startup(function(use)
 	-- Treesitter
     use 'nvim-treesitter/nvim-treesitter-context'
     use 'nvim-treesitter/nvim-treesitter'
-	use 'sheerun/vim-polyglot'
+    use 'sheerun/vim-polyglot'
 
 	-- Formatting
     use {'mhartington/formatter.nvim'}
-	use {'MunifTanjim/prettier.nvim'}
+    use {'MunifTanjim/prettier.nvim'}
     use 'windwp/nvim-ts-autotag'
     use 'windwp/nvim-autopairs'
     use 'tpope/vim-surround'
@@ -47,6 +47,7 @@ packer.startup(function(use)
     use 'kevinhwang91/nvim-hlslens'
     use 'petertriho/nvim-scrollbar'
     use 'glepnir/dashboard-nvim'
+    use 'mbbill/undotree'
 
     use {
       'sindrets/diffview.nvim',
@@ -55,7 +56,7 @@ packer.startup(function(use)
       }
     }
 
-	use {
+    use {
         'nvim-lualine/lualine.nvim',
         requires = {
             'kyazdani42/nvim-web-devicons',
@@ -99,8 +100,8 @@ packer.startup(function(use)
       requires = { "nvim-lua/plenary.nvim" }
     })
 
-	-- LSP extensions
-	use { 'L3MON4D3/LuaSnip' }
+    -- LSP extensions
+    use { 'L3MON4D3/LuaSnip' }
     use { 'saadparwaiz1/cmp_luasnip' }
     use "rafamadriz/friendly-snippets"
     use 'folke/neodev.nvim'
@@ -116,7 +117,7 @@ packer.startup(function(use)
         'hrsh7th/cmp-nvim-lsp-signature-help',
       }
     }
---
+
     use {
       'saecki/crates.nvim',
       tag = 'v0.3.0',
@@ -128,7 +129,7 @@ packer.startup(function(use)
       end
     }
 
-	-- Telescope
+    -- Telescope
     use 'nvim-lua/telescope.nvim'
     use {
       'nvim-telescope/telescope-fzf-native.nvim',
@@ -145,7 +146,7 @@ packer.startup(function(use)
     }
 
 
-	-- Utility / random
+    -- Utility / random
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'jremmen/vim-ripgrep'

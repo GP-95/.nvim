@@ -17,7 +17,7 @@ local languageServers = {
     'cssls',
     'cssmodules_ls',
     'cmake',
-  }
+}
 
 require('mason').setup()
 require('mason-lspconfig').setup({

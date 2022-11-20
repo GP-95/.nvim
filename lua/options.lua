@@ -14,7 +14,9 @@ vim.o.ruler = true
 vim.o.mouse = 'a'
 vim.o.wrap = false
 vim.o.shiftwidth = 4
-vim.o.tabstop = 4
+vim.o.expandtab = true
+-- Enabligng tabstop will make indent-tabline show two lines per indent
+-- vim.o.tabstop = 4 
 vim.o.showcmd = true
 --vim.o.showmatch = true
 vim.o.cursorline = true
@@ -23,3 +25,4 @@ vim.o.syntax = 'on'
 vim.o.swapfile = false
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.termguicolors = true
+vim.opt.pumheight=7

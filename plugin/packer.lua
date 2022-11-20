@@ -48,6 +48,7 @@ packer.startup(function(use)
     use 'petertriho/nvim-scrollbar'
     use 'glepnir/dashboard-nvim'
     use 'mbbill/undotree'
+    use 'j-hui/fidget.nvim'
 
     use {
       'sindrets/diffview.nvim',

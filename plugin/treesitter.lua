@@ -1,21 +1,24 @@
 require('nvim-treesitter.configs').setup({
-  ensure_installed = {
-    'bash',
-    'html',
-    'css',
-    'scss',
-    'javascript',
-    'typescript',
-    'regex',
-    'jsdoc',
-    'markdown',
-    'lua',
-    'jsonc',
-    'yaml',
-    'toml',
-    'prisma'
-  },
-  highlight = {
-    enable = true,
-  },
+    ensure_installed = {
+        "help",
+        "javascript",
+        "typescript",
+        "rust",
+        "lua",
+        "haskell",
+        "bash",
+        "html",
+        "css",
+        "scss",
+        "json",
+        "toml",
+        "yaml",
+        "swift"
+    },
+    sync_install = false,
+    auto_install = true,
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false
+    }
 })

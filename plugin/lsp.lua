@@ -1,93 +1,50 @@
-local languageServers = {
-    'sumneko_lua',
-    'rust_analyzer',
-    'tsserver',
-    'yamlls',
-    'tailwindcss',
-    'taplo',
-    'solidity',
-    'prismals',
-    'marksman',
-    'jsonls',
-    'hls',
+local lsp = require('lsp-zero')
+
+lsp.preset('recommended')
+
+lsp.ensure_installed({
     'html',
-    'graphql',
-    'eslint',
-    'dockerls',
     'cssls',
-    'cssmodules_ls',
-    'cmake',
-}
-
-require('mason').setup()
-require('mason-lspconfig').setup({
-  ensure_installed = languageServers,
-  automatic_installation = true
+    'tsserver',
+    'rust_analyzer',
+    'sumneko_lua',
+    'hls'
 })
 
-require('luasnip.loaders.from_vscode').lazy_load()
-require('neodev').setup({})
-
-local lsp_defaults = {
-  flags = {
-    debounce_text_changes = 150,
-  },
-  capabilities = require('cmp_nvim_lsp').default_capabilities(),
-  on_attach = function(client, bufnr)
-    vim.api.nvim_exec_autocmds('User', {pattern = 'LspAttached'})
-  end
-}
-
-local lspconfig = require('lspconfig')
-
-lspconfig.util.default_config = vim.tbl_deep_extend(
-  'force',
-  lspconfig.util.default_config,
-  lsp_defaults
-)
-
-lspconfig.tsserver.setup({
-  on_attach = function(client)
-    client.server_capabilities.document_formatting = false
-  end,
+lsp.setup_nvim_cmp({
+    sources ={
+        {name = 'nvim_lua'},
+        {
+            name = 'nvim_lsp',
+            entry_filter = function(entry, _ctx) -- Ignore snippets
+                return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
+            end
+        },
+        {name = 'crates'},
+        {name = 'buffer', keyword_length = 3},
+        {name = 'path', keyword_length = 3}
+    }
 })
 
--- lspconfig.gdscript.setup({
---   on_attach = function (client)
---     local _notify = client.notify
---     client.notify = function (method, params)
---       if method == 'textDocument/didClose' then
---         return
---       end
---       _notify(method, params)
---     end
---   end
--- })
+lsp.nvim_workspace({
+    librart = vim.api.nvim_get_runtime_file('', true)
+})
 
--- Temporary till I am not lazy
-for _, v in pairs(languageServers) do
-  if(v == 'sumneko_lua') then
-    lspconfig[v].setup({
-        settings = {
-          Lua = {
+
+lsp.configure('sumneko_lua', {
+    settings = {
+        Lua = {
             diagnostics = {
-              globals = {'vim'}
-            },
-            workspace = {
-              checkThirdParty = false
+                globals = {
+                    'vim'
+                }
             }
-          }
         }
-      })
-  elseif(v == 'jsonls') then
-    lspconfig[v].setup({
-        filetypes = { "json", "jsonc" }
-      })
-  elseif (v == 'tsserver' or v == 'gdscript') then
-    goto continue
-  else
-    lspconfig[v].setup({})
-  end
-  ::continue::
-end
+    }
+})
 
+local rust_lsp = lsp.build_options('rust_analyzer', {})
+
+lsp.setup()
+
+require('rust-tools').setup({server = rust_lsp})

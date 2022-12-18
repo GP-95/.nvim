@@ -1,28 +1,31 @@
-vim.o.relativenumber = true
-vim.o.number = true
-vim.o.hlsearch = true
-vim.o.incsearch = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.autoindent = true
-vim.o.titlestring = '%t'
-vim.o.encoding = 'utf-8'
-vim.o.linebreak = false
-vim.o.scrolloff = 5
-vim.o.sidescrolloff = 20
-vim.o.ruler = true
-vim.o.mouse = 'a'
-vim.o.wrap = false
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
--- Enabligng tabstop will make indent-tabline show two lines per indent
--- vim.o.tabstop = 4 
-vim.o.showcmd = true
---vim.o.showmatch = true
-vim.o.cursorline = true
+vim.opt.relativenumber = true
+vim.opt.number = true
+
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+vim.opt.ignorecase = true
+
+vim.opt.smartcase = true
+vim.opt.autoindent = true
+
+vim.opt.titlestring = '%t'
+vim.opt.encoding = 'utf-8'
+vim.opt.linebreak = false
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 20
+vim.opt.ruler = true
+vim.opt.mouse = 'a'
+vim.opt.wrap = false
+
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
+
+vim.opt.cursorline = true
 vim.opt.colorcolumn = "80"
-vim.o.syntax = 'on'
-vim.o.swapfile = false
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+vim.opt.swapfile = false
+vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
+vim.opt.undofile = true
 vim.opt.termguicolors = true
-vim.opt.pumheight=7
+vim.opt.pumheight=12

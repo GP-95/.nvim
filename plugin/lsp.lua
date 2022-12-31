@@ -21,8 +21,9 @@ lsp.setup_nvim_cmp({
             end
         },
         {name = 'crates'},
-        {name = 'buffer', keyword_length = 3},
+        -- {name = 'buffer', keyword_length = 3},
         {name = 'path', keyword_length = 3},
+        {name = 'luasnip'}
     }
 })
 
@@ -43,8 +44,27 @@ lsp.configure('sumneko_lua', {
     }
 })
 
-local rust_lsp = lsp.build_options('rust_analyzer', {})
+local rust_lsp = lsp.build_options('rust_analyzer', {
+    checkOnSave = {
+        command = "clippy",
+    }
+})
+
+lsp.on_attach(function(client, bufnr)
+    if client.name == 'tsserver' then -- Ignore tsserver formatting, using null-ls instead
+        client.server_capabilities.documentFormattingProvider = false
+    end
+end)
 
 lsp.setup()
 
-require('rust-tools').setup({server = rust_lsp})
+require('rust-tools').setup({
+    server = rust_lsp,
+    tools = {
+        runnables = {
+            use_telescope = true
+        }
+    }
+})
+
+

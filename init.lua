@@ -1,3 +1,4 @@
-require('options')
-require('keymaps')
-require('utils')
+require("options")
+require("keymaps")
+require("utils")
+require("diagnostic")

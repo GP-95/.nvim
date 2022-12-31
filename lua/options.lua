@@ -24,6 +24,7 @@ vim.opt.expandtab = true
 
 vim.opt.cursorline = true
 vim.opt.colorcolumn = "80"
+vim.wo.signcolumn = "yes"
 vim.opt.swapfile = false
 vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
 vim.opt.undofile = true

@@ -8,5 +8,9 @@ null_ls.setup({
 		fmt.rustfmt,
 		fmt.prettier,
 		fmt.stylua,
+        fmt.taplo,
+        fmt.yamlfmt,
+        -- fmt.shfmt
+        fmt.beautysh
 	},
 })

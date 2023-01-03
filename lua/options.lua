@@ -22,7 +22,7 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 
-vim.opt.cursorline = true
+--vim.opt.cursorline = true
 vim.opt.colorcolumn = "80"
 vim.wo.signcolumn = "yes"
 vim.opt.swapfile = false
